@@ -4,6 +4,7 @@ const float setpoint = 29.00;
 
 void setup() {
   Serial.begin(9600);
+  pinMode(2, OUTPUT);
 }
 
 void loop() {
@@ -20,10 +21,12 @@ void loop() {
     Serial.println(receivedTemperature);
 
     if (receivedTemperature > setpoint){
-      Serial.println("Kipas menyalaa...");
+      digitalWrite(2, HIGH);
+      Serial.println("Fan turn on...");
     }
     else{
-      Serial.println("Kipas mati");
+      digitalWrite(2, LOW);
+      Serial.println("Fan turn off...");
     }
   }
 }
