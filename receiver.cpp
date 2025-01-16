@@ -8,6 +8,7 @@ void setup() {
 }
 
 void loop() {
+  delay(2000);
   if (Serial.available() >= sizeof(float)) {
     // Read the bytes into the array
     for (int i = 0; i < sizeof(float); i++) {
@@ -28,5 +29,8 @@ void loop() {
       digitalWrite(2, LOW);
       Serial.println("Fan turn off...");
     }
+  }
+  else {
+    Serial.println("No data received!");
   }
 }
